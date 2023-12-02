@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-      - master
+      - ma
 
 jobs:
   security-checker:
@@ -18,14 +18,10 @@ jobs:
           php-version: 8.2
 
       - name: Install Dependencies
-        run: |
-          composer install
-
-      - name: Install local-php-security-checker
-        run: composer global require sensiolabs/security-checker
+        run: composer install
 
       - name: SecurityChecker
-        run: php ~/.composer/vendor/bin/local-php-security-checker composer.lock
+        run: local-php-security-checker composer.lock
 
   php-code-standard:
     runs-on: ubuntu-latest
@@ -39,20 +35,7 @@ jobs:
           php-version: 8.2
 
       - name: Install Dependencies
-        run: |
-          composer install
-
-      - name: Install php-cs-fixer
-        run: |
-          wget https://cs.symfony.com/download/php-cs-fixer-v3.phar -O php-cs-fixer
-          chmod +x php-cs-fixer
-          sudo mv php-cs-fixer /usr/local/bin/php-cs-fixer
-
-      - name: Install PHPStan
-        run: composer global require phpstan/phpstan
-
-      - name: Add PHPStan to PATH
-        run: echo "::add-path::~/.composer/vendor/bin"
+        run: composer install
 
       - name: PHP Coding Standards
         run: |
@@ -73,20 +56,7 @@ jobs:
           php-version: 8.2
 
       - name: Install Dependencies
-        run: |
-          composer install
-
-      - name: Install php-cs-fixer
-        run: |
-          wget https://cs.symfony.com/download/php-cs-fixer-v3.phar -O php-cs-fixer
-          chmod +x php-cs-fixer
-          sudo mv php-cs-fixer /usr/local/bin/php-cs-fixer
-
-      - name: Install PHPStan
-        run: composer global require phpstan/phpstan
-
-      - name: Add PHPStan to PATH
-        run: echo "::add-path::~/.composer/vendor/bin"
+        run: composer install
 
       - name: PHP Lint
         run: |
