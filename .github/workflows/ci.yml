@@ -3,11 +3,11 @@ name: CI
 on:
   push:
     branches:
-      - ma
+      - master
 
 jobs:
   security-checker:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
