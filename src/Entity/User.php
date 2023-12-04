@@ -156,7 +156,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         if ($this->userBooks->removeElement($userBook)) {
             // set the owning side to null (unless already changed)
             if ($userBook->getReader() === $this) {
-                $userBook->setReader(null);
+                $userBook->setReader(null); 
             }
         }
 
