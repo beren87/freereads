@@ -162,4 +162,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        if (isset($this->pseudo)) {
+            return $this->pseudo;
+        }
+
+        if (isset($this->email)) {
+            return $this->email;
+        }
+
+        return ''; // Valeur par défaut si ni pseudo ni email n'est défini
+    }
 }
