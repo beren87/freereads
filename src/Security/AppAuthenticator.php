@@ -35,9 +35,9 @@ class AppAuthenticator extends AbstractLoginFormAuthenticator
         $csrfToken = $request->request->get('_csrf_token');
         $csrfToken = null !== $csrfToken ? (string) $csrfToken : null;
 
-        return new Passport(
-            new UserBadge((string) $email),
-            new PasswordCredentials((string) $request->request->get('password', '')),
+        return new Passport( // 1st argument is the user you've just retrieved
+            new UserBadge((string) $email), // 2nd argument is the user's password
+            new PasswordCredentials((string) $request->request->get('password', '')), //    new PasswordCredentials((string) $request->request->get('password', '')), // 3rd argument is the name of the firewall that's authenticating
             [
                 new CsrfTokenBadge('authenticate', $csrfToken),
                 new RememberMeBadge(),
