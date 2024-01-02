@@ -16,7 +16,7 @@ class EasyAdminSubscriber implements EventSubscriberInterface
         ];
     }
 
-    public function setUuid(BeforeEntityPersistedEvent $event)
+    public function setUuid(BeforeEntityPersistedEvent $event): void
     {
         $entity = $event->getEntityInstance();
 

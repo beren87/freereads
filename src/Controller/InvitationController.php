@@ -6,7 +6,6 @@ use App\Entity\Invitation;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use Doctrine\ORM\EntityManagerInterface;
-use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,10 +21,10 @@ class InvitationController extends AbstractController
     }
 
     #[Route('/invitation/{uuid}', name: 'app_invitation')]
-    public function index(Invitation $invitation, Request $request, ): Response
+    public function index(Invitation $invitation, Request $request): Response
     {
-        if ($invitation->getReader() !== null) {
-            throw new Exception('This invitation has already been used.');
+        if (null !== $invitation->getReader()) {
+            throw new \Exception('This invitation has already been used.');
         }
 
         $user = new User();
