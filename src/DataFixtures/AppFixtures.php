@@ -47,7 +47,7 @@ class AppFixtures extends Fixture
             $status[] = $oneStatus;
         }
 
-        // Create 100 Books
+        // Create 100 Books with random Author and Publisher
         $books = [];
         for ($i = 0; $i < 100; ++$i) {
             $book = new Book();
