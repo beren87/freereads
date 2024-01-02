@@ -11,13 +11,12 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 class InvitationCrudController extends AbstractCrudController
 {
     use Trait\CreateReadDeleteTrait;
-    
+
     public static function getEntityFqcn(): string
     {
         return Invitation::class;
     }
 
-    
     public function configureFields(string $pageName): iterable
     {
         return [
@@ -28,5 +27,4 @@ class InvitationCrudController extends AbstractCrudController
                 ->hideWhenCreating(),
         ];
     }
-    
 }
